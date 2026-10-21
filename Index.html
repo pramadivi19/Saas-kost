@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SaaS Kost</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 2rem auto; padding: 0 1rem; }
+    input, button { padding: .6rem; margin: .25rem 0; width: 100%; box-sizing: border-box; font-size: 1rem; }
+    button { cursor: pointer; }
+    .hidden { display: none; }
+    .card { border: 1px solid #ccc; border-radius: 8px; padding: .75rem; margin: .5rem 0; }
+    .card button { width: auto; margin-top: .5rem; }
+    .badge { display: inline-block; padding: .1rem .5rem; border-radius: 99px; font-size: .85rem; }
+    .tersedia { background: #d7f5dd; }
+    .terisi { background: #ffe0b2; }
+    .perbaikan { background: #e0e0e0; }
+    #pesan { color: #b00020; min-height: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>SaaS Kost</h1>
+  <p id="pesan"></p>
+
+  <!-- 1. Halaman login / daftar -->
+  <section id="auth">
+    <h2>Masuk / Daftar</h2>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password (min. 6 karakter)">
+    <button id="btn-masuk">Masuk</button>
+    <button id="btn-daftar">Daftar akun baru</button>
+  </section>
+
+  <!-- 2. Sudah login tapi belum jadi owner -->
+  <section id="onboarding" class="hidden">
+    <h2>Buat Bisnis Kost</h2>
+    <input id="nama-bisnis" placeholder="Nama bisnis kost kamu">
+    <button id="btn-buat-owner">Buat bisnis (trial 14 hari)</button>
+  </section>
+
+  <!-- 3. Dashboard owner: daftar kost -->
+  <section id="dashboard" class="hidden">
+    <h2 id="judul-bisnis"></h2>
+    <h3>Tambah Kost</h3>
+    <input id="kost-nama" placeholder="Nama kost">
+    <input id="kost-kota" placeholder="Kota">
+    <button id="btn-tambah-kost">Simpan kost</button>
+    <h3>Daftar Kost</h3>
+    <div id="daftar-kost"></div>
+  </section>
+
+  <!-- 4. Halaman kamar untuk satu kost -->
+  <section id="kamar" class="hidden">
+    <button id="btn-kembali">&larr; Kembali ke daftar kost</button>
+    <h2 id="judul-kost"></h2>
+    <h3>Tambah Kamar</h3>
+    <input id="kamar-nomor" placeholder="Nomor kamar (contoh: 101)">
+    <input id="kamar-harga" type="number" min="0" placeholder="Harga per bulan (Rp)">
+    <button id="btn-tambah-kamar">Simpan kamar</button>
+    <h3>Daftar Kamar</h3>
+    <div id="daftar-kamar"></div>
+  </section>
+
+  <button id="btn-keluar" class="hidden">Keluar</button>
+
+  <!-- Library Supabase (versi siap pakai, tanpa instalasi) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
