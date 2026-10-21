@@ -8,13 +8,16 @@
     body { font-family: system-ui, sans-serif; max-width: 480px; margin: 2rem auto; padding: 0 1rem; }
     input, button { padding: .6rem; margin: .25rem 0; width: 100%; box-sizing: border-box; font-size: 1rem; }
     button { cursor: pointer; }
+    label { display: block; font-size: .85rem; color: #555; margin-top: .4rem; }
     .hidden { display: none; }
     .card { border: 1px solid #ccc; border-radius: 8px; padding: .75rem; margin: .5rem 0; }
     .card button { width: auto; margin-top: .5rem; }
+    .kecil { font-size: .9rem; color: #444; margin-top: .4rem; }
     .badge { display: inline-block; padding: .1rem .5rem; border-radius: 99px; font-size: .85rem; }
     .tersedia { background: #d7f5dd; }
     .terisi { background: #ffe0b2; }
     .perbaikan { background: #e0e0e0; }
+    .form-box { border: 2px solid #1a936f; border-radius: 8px; padding: .75rem; margin: .75rem 0; }
     #pesan { color: #b00020; min-height: 1.5rem; }
   </style>
 </head>
@@ -53,6 +56,24 @@
   <section id="kamar" class="hidden">
     <button id="btn-kembali">&larr; Kembali ke daftar kost</button>
     <h2 id="judul-kost"></h2>
+
+    <!-- Form isi penghuni (muncul saat klik "Isi penghuni") -->
+    <div id="form-penghuni" class="form-box hidden">
+      <h3 id="judul-form-penghuni"></h3>
+      <label for="huni-nama">Nama penghuni</label>
+      <input id="huni-nama" placeholder="Nama lengkap">
+      <label for="huni-wa">No. WhatsApp</label>
+      <input id="huni-wa" type="tel" placeholder="08xxxxxxxxxx">
+      <label for="huni-masuk">Tanggal masuk</label>
+      <input id="huni-masuk" type="date">
+      <label for="huni-harga">Harga sewa per bulan (Rp)</label>
+      <input id="huni-harga" type="number" min="0">
+      <label for="huni-deposit">Deposit (Rp)</label>
+      <input id="huni-deposit" type="number" min="0" value="0">
+      <button id="btn-simpan-penghuni">Simpan penghuni</button>
+      <button id="btn-batal-penghuni">Batal</button>
+    </div>
+
     <h3>Tambah Kamar</h3>
     <input id="kamar-nomor" placeholder="Nomor kamar (contoh: 101)">
     <input id="kamar-harga" type="number" min="0" placeholder="Harga per bulan (Rp)">
@@ -65,6 +86,7 @@
 
   <!-- Library Supabase (versi siap pakai, tanpa instalasi) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
